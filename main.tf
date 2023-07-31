@@ -1,7 +1,7 @@
 # Netwoking for Grace IT Group
 
 resource "aws_vpc" "Grace-IT-Group-VPC" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.vpc-cidr
   instance_tenancy = "default"
 
   tags = {
@@ -14,8 +14,8 @@ resource "aws_vpc" "Grace-IT-Group-VPC" {
 
 resource "aws_subnet" "Prod-Public-subnet-1" {
   vpc_id            = aws_vpc.Grace-IT-Group-VPC.id
-  cidr_block        = "10.0.10.0/24"
-  availability_zone = "eu-west-2a"
+  cidr_block        = var.prod-pub-sub-1
+  availability_zone = var.prod-pub-sub-1-az
 
   tags = {
     Name = "Prod-Public-subnet-1"
@@ -26,8 +26,8 @@ resource "aws_subnet" "Prod-Public-subnet-1" {
 
 resource "aws_subnet" "Prod-Public-subnet-2" {
   vpc_id            = aws_vpc.Grace-IT-Group-VPC.id
-  cidr_block        = "10.0.11.0/24"
-  availability_zone = "eu-west-2b"
+  cidr_block        = var.prod-pub-sub-2
+  availability_zone = var.prod-pub-sub-2-az
 
   tags = {
     Name = "Prod-Public-subnet-2"
@@ -38,8 +38,8 @@ resource "aws_subnet" "Prod-Public-subnet-2" {
 
 resource "aws_subnet" "Prod-Private-subnet-1" {
   vpc_id            = aws_vpc.Grace-IT-Group-VPC.id
-  cidr_block        = "10.0.12.0/24"
-  availability_zone = "eu-west-2a"
+  cidr_block        = var.prod-priv-sub-1
+  availability_zone = var.prod-priv-sub-1-az
 
   tags = {
     Name = "Prod-Private-subnet-1"
@@ -50,8 +50,8 @@ resource "aws_subnet" "Prod-Private-subnet-1" {
 
 resource "aws_subnet" "Prod-Private-subnet-2" {
   vpc_id            = aws_vpc.Grace-IT-Group-VPC.id
-  cidr_block        = "10.0.13.0/24"
-  availability_zone = "eu-west-2b"
+  cidr_block        = var.prod-priv-sub-2
+  availability_zone = var.prod-priv-sub-2-az
 
   tags = {
     Name = "Prod-Private-subnet-2"
